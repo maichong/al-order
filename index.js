@@ -50,13 +50,13 @@ export default class Order extends wx.Component {
    *跟据导航区分不同状态的订单
    * @param index 导航index
    */
-  navSplitItem(index) {
-    console.log('---------nav split item--', index);
+  navSplitItem(index, items) {
+    items = items || this.data.items;
     let list = [];
     if (index === '1') {
-      list = this.data.items;
+      list = immutable(items);
     } else {
-      this.data.items.forEach((item) => {
+      items.forEach((item) => {
         if (index === '2' && item.state === 200) {
           list.push(immutable(item));
         } else if (index === '3' && item.state === 400) {
@@ -140,7 +140,7 @@ export default class Order extends wx.Component {
   }
 
   onUpdate(props) {
-    this.setData({ items: immutable(props.items), index: props.index });
-    this.navSplitItem(props.index);
+    this.setData({ items: immutable(props.items), index: props.index + '' });
+    this.navSplitItem(props.index + '', props.items);
   }
 }
