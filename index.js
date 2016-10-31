@@ -8,12 +8,12 @@ import wx from 'labrador';
 import immutable from 'seamless-immutable';
 import OrderItem from 'al-order-item';
 
-const { array, func, string } = wx.PropTypes;
+const { array, func, number } = wx.PropTypes;
 
 export default class Order extends wx.Component {
   propTypes = {
     items: array,
-    index: string,
+    index: number,
     onItemTap: func,
     onItemPay: func,
     onItemEvaluate: func,
@@ -30,7 +30,7 @@ export default class Order extends wx.Component {
     modalHidden: true,
     key: '',
     id: '',
-    index: 1
+    index: '1'
   };
 
   children = {
@@ -104,13 +104,13 @@ export default class Order extends wx.Component {
     let key = this.data.key;
     let id = this.data.id;
     if (key === 'cancel') {
-      this.props.onItemCancel(id, this.data.index);
+      this.props.onItemCancel(id, parseInt(this.data.index));
     } else if (key === 'refund') {
-      this.props.onItemRefund(id, this.data.index);
+      this.props.onItemRefund(id, parseInt(this.data.index));
     } else if (key === 'confirm') {
-      this.props.onItemConfirm(id, this.data.index);
+      this.props.onItemConfirm(id, parseInt(this.data.index));
     } else if (key === 'delete') {
-      this.props.onItemDelete(id, this.data.index);
+      this.props.onItemDelete(id, parseInt(this.data.index));
     }
     this.setData({ modalText: '', modalHidden: true, key: '', id: '' });
   }
@@ -140,7 +140,11 @@ export default class Order extends wx.Component {
   }
 
   onUpdate(props) {
-    this.setData({ items: immutable(props.items), index: props.index + '' });
-    this.navSplitItem(props.index + '', props.items);
+    let index = '1';
+    if (props.index && props.index >= 1 && props.index <= 5) {
+      index = props.index + '';
+    }
+    this.setData({ items: immutable(props.items), index });
+    this.navSplitItem(index, props.items);
   }
 }
