@@ -6,7 +6,7 @@
 
 import wx from 'labrador';
 import immutable from 'seamless-immutable';
-import OrderItem from 'al-order-item';
+import OrderItem from './item';
 
 const { array, func, number } = wx.PropTypes;
 
@@ -140,6 +140,7 @@ export default class Order extends wx.Component {
   }
 
   onUpdate(props) {
+    console.warn('al order props=======',props);
     let index = '1';
     if (props.index && props.index >= 1 && props.index <= 5) {
       index = props.index + '';

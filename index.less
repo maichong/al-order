@@ -1,22 +1,16 @@
-@import "al-order-item";
-
+@import "./item";
+@import "al-style";
 .order-item-navigation-block{
   height: 2rem;
   width: 20rem;
-  font-size:0.95rem;
-  background-color: #fff;
+  font-size:@font-size-xlarge;
+  background-color: @white;
   border-bottom: 1rpx solid #cccccc;
-  position: fixed;
-  top:0;
-
 }
 .order-item-navigation-view{
-  display: inline-block;
   width:4rem;
-  text-align: center;
-  vertical-align: bottom;
   height: 1.75rem;
-  border-bottom: 0.3rem solid #fff;
+  border-bottom: 0.3rem solid @white;
 }
 .order-item-navigation-select{
   color: #bd0520;
@@ -27,7 +21,6 @@
 }
 .order-item-modal-view{
   margin:2rem;
-  text-align: center;
 }
 .order-item-scroll-view{
   margin-top:2rem;

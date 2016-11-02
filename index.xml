@@ -1,38 +1,38 @@
 <modal confirm-text="是" cancel-text="否" hidden="{{modalHidden}}" catchconfirm="handleConfirm"
        catchcancel="handleCancel">
-  <view class="order-item-modal-view">{{modalText}}</view>
+  <view class="order-item-modal-view center">{{modalText}}</view>
 </modal>
 
 <view>
 <scroll-view scroll-y="true" class="order-item-scroll-view">
-  <list key="itemList" name="al-order-item"/>
+  <list key="itemList" name="al-order/item"/>
 </scroll-view>
-<view class="order-item-navigation-block">
-  <view class="order-item-navigation-view {{index==1?'order-item-navigation-select':''}}"
+<view class="order-item-navigation-block fixed top-0">
+  <view class="order-item-navigation-view inline-block center align-bottom {{index==1?'order-item-navigation-select':''}}"
         catchtap="handleNavTap" data-index="1">
     <view class="order-item-navigation-top">
       <text>全部</text>
     </view>
   </view>
-  <view class="order-item-navigation-view {{index==2?'order-item-navigation-select':''}}"
+  <view class="order-item-navigation-view inline-block center align-bottom {{index==2?'order-item-navigation-select':''}}"
         catchtap="handleNavTap" data-index="2">
     <view class="order-item-navigation-top">
       <text>待付款</text>
     </view>
   </view>
-  <view class="order-item-navigation-view {{index==3?'order-item-navigation-select':''}}"
+  <view class="order-item-navigation-view inline-block center align-bottom {{index==3?'order-item-navigation-select':''}}"
         catchtap="handleNavTap" data-index="3">
     <view class="order-item-navigation-top">
       <text>待发货</text>
     </view>
   </view>
-  <view class="order-item-navigation-view {{index==4?'order-item-navigation-select':''}}"
+  <view class="order-item-navigation-view inline-block center align-bottom {{index==4?'order-item-navigation-select':''}}"
         catchtap="handleNavTap" data-index="4">
     <view class="order-item-navigation-top">
       <text>已发货</text>
     </view>
   </view>
-  <view class="order-item-navigation-view {{index==5?'order-item-navigation-select':''}}"
+  <view class="order-item-navigation-view inline-block center align-bottom {{index==5?'order-item-navigation-select':''}}"
         catchtap="handleNavTap" data-index="5">
     <view class="order-item-navigation-top">
       <text>待评价</text>

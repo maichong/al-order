@@ -1,0 +1,106 @@
+<view class="order-item-block" catchtap="handleTap">
+  <view class="order-item-line-block">
+    <text>订单编号:{{id}}</text>
+    <block wx:if="{{state==900}}">
+      <text class="right right-align">已取消</text>
+    </block>
+    <block wx:elif="{{state==200}}">
+      <text class="right right-align"></text>
+    </block>
+  </view>
+  <view class="order-item-line-block relative">
+    <view class="inline-block">
+      <image class="order-item-pic-view" src="{{pic}}"/>
+    </view>
+    <view class="order-item-title-block inline-block absolute">
+      <view class="order-item-title-view block">{{title}}</view>
+      <view class="order-item-title-view block order-item-goods-count">
+        共{{goodsCount}}件商品
+      </view>
+    </view>
+    <view class="order-item-state inline-block absolute">
+      <text class="order-item-state-view right-align block default-color">包裹1</text>
+      <block wx:if="{{state==200}}">
+        <text class="order-item-state-view right-align block">待付款</text>
+      </block>
+      <block wx:if="{{state==300}}">
+        <text class="order-item-state-view right-align block">待审核</text>
+      </block>
+      <block wx:if="{{state==400}}">
+        <text class="order-item-state-view right-align block">待发货</text>
+      </block>
+      <block wx:if="{{state==500}}">
+        <text class="order-item-state-view right-align block">待收货</text>
+      </block>
+      <block wx:if="{{state==600}}">
+        <text class="order-item-state-view right-align block">待评价</text>
+      </block>
+      <block wx:if="{{state==800}}">
+        <text class="order-item-state-view right-align block">退款中</text>
+      </block>
+      <block wx:if="{{state==900}}">
+        <text class="order-item-state-view right-align block">已取消</text>
+      </block>
+
+    </view>
+  </view>
+  <view class="order-item-btn-block">
+    <block wx:if="{{state==200}}">
+      <block wx:if="{{false}}">------------------state 200 待付款--------------------</block>
+      <view class="order-item-pay-view inline-block">
+        <text>实付:</text>
+        <text class="order-item-pay-text">￥{{pay}}</text>
+      </view>
+      <view class="order-item-btn-view inline-block center align-middle" catchtap="handleCancelTap">
+        <view>
+          <text>取消订单</text>
+        </view>
+      </view>
+      <view class="order-item-btn-view inline-block center align-middle order-item-red-btn" catchtap="handlePay">
+        <view>
+          <text>付款</text>
+        </view>
+      </view>
+    </block>
+    <block wx:elif="{{state==300}}">
+      <block wx:if="{{false}}">------------------state 300 已付款 待审核--------------------</block>
+      <view class="order-item-btn-view inline-block center align-middle order-item-one-btn order-item-red-btn" catchtap="handleRefund">
+        <view>
+          <text>申请退款</text>
+        </view>
+      </view>
+    </block>
+    <block wx:elif="{{state==400}}">
+      <block wx:if="{{false}}">------------------state 400 已审核 待发货--------------------</block>
+      <view class="order-item-btn-view inline-block center align-middle order-item-one-btn order-item-red-btn" catchtap="handleRefund">
+        <view>
+          <text>申请退款</text>
+        </view>
+      </view>
+    </block>
+    <block wx:elif="{{state==500}}">
+      <block wx:if="{{false}}">------------------state 500 待收货--------------------</block>
+      <view class="order-item-btn-view inline-block center align-middle order-item-one-btn order-item-red-btn" catchtap="handleConfirm">
+        <view>
+          <text>确认收货</text>
+        </view>
+      </view>
+    </block>
+    <block wx:elif="{{state==600}}">
+      <block wx:if="{{false}}">------------------state 600 已完成--------------------</block>
+      <view class="order-item-btn-view inline-block center align-middle order-item-one-btn order-item-red-btn" catchtap="handleEvaluate">
+        <view>
+          <text>立即评价</text>
+        </view>
+      </view>
+    </block>
+    <block wx:elif="{{state==900}}">
+      <block wx:if="{{false}}">------------------state 900 已失败--------------------</block>
+      <view class="order-item-btn-view inline-block center align-middle order-item-one-btn" catchtap="handleDelete">
+        <view>
+          <text>删除订单</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
